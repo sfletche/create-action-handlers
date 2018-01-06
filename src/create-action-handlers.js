@@ -1,4 +1,7 @@
 const fs = require('fs');
+const _ = require('lodash');
+
+const createActionType = require('./create-action-type');
 
 function writeHandler(err) {
   if(err) {
@@ -7,18 +10,13 @@ function writeHandler(err) {
   console.log("The file was saved!");
 }
 
-const actionType = 'FETCH_STUFF';
-const action = 'fetchStuff';
-const actionSpaced = 'fetch stuff';
-const directory = 'myApplication';
+const actionType = process.argv[2] || 'FETCH_STUFF';
+const action = _.camelCase(actionType);
+const actionSpaced = _.lowerCase(actionType);
+const directory = process.argv[3] || './myApplication';
 
 // create action type
-const actionTypeContent = `// ${directory}/action-types.js
-const ${actionType} = '${directory}/${actionType}';
-
-export { ${actionType} };
-`;
-fs.writeFile(`${directory}/action-types.js`, actionTypeContent, writeHandler);
+createActionType({ directory, actionType })
 
 // create action
 const actionContent = `// ${directory}/actions.js

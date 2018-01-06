@@ -4,7 +4,7 @@
 ```
 > mkdir myApplication
 > mkdir myApplication/__tests__
-> node create-action-handlers.js
+> node src/create-action-handlers.js FETCH_STUFF ./myApplication
 ```
 
 ## Next Steps

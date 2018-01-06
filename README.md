@@ -13,4 +13,5 @@
 * Programatically parsing parameterized action into action type, etc
 * Differentiation for already existing files (e.g. already existing `actions.js`, `action-types.js`, `reducer.js`, or `sagas.js`)
 * Explore making this a command line tool via https://www.npmjs.com/package/commander 
+  * with good example here: https://scotch.io/tutorials/build-an-interactive-command-line-application-with-nodejs
 * Publish as node module

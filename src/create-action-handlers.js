@@ -9,13 +9,6 @@ const createReducerTest = require('./create-reducer-test');
 const createSaga = require('./create-saga');
 const createSagaTest = require('./create-saga-test');
 
-function writeHandler(err) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log("The file was saved!");
-}
-
 const actionType = process.argv[2] || 'FETCH_STUFF';
 const action = _.camelCase(actionType);
 const actionSpaced = _.lowerCase(actionType);

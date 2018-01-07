@@ -13,10 +13,10 @@ function getContent(directory, actionType, action) {
     `import { ${actionType} } from './action-types';\n` +
     `\n` +
     `function ${action}() {\n` +
-    `  return {` +
-    `    type: ${actionType},` +
-    `  };` +
-    `}` +
+    `  return {\n` +
+    `    type: ${actionType},\n` +
+    `  };\n` +
+    `}\n` +
     `\n` +
     `export { ${action} };`
   );

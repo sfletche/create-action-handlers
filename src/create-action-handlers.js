@@ -1,6 +1,7 @@
 const fs = require('fs');
 const _ = require('lodash');
 
+const createDirectories = require('./create-directories');
 const createActionType = require('./create-action-type');
 const createAction = require('./create-action');
 const createActionTest = require('./create-action-test');
@@ -13,6 +14,8 @@ const actionType = process.argv[2] || 'FETCH_STUFF';
 const action = _.camelCase(actionType);
 const actionSpaced = _.lowerCase(actionType);
 const directory = process.argv[3] || './myApplication';
+
+createDirectories(directory);
 
 createActionType({ directory, actionType });
 

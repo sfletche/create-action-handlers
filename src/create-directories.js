@@ -1,9 +1,9 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 function createDirectories(directory) {
   if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory);
+    fs.ensureDirSync(directory);
     console.log(`created ${directory}`);
   }
   if (!fs.existsSync(path.join(directory, '__tests__'))) {

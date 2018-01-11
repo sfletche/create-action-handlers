@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "description": "Automate the creation of boilerplate action handlers for React-Redux applications",
   "dependencies": {
+    "fs-extra": "5.0.0",
     "lodash": "4.17.4"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

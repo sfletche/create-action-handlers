@@ -4,14 +4,11 @@
 ```
 > git clone 
 > cd create-action-handlers
-> mkdir myApplication
-> mkdir myApplication/__tests__
-> node src/create-action-handlers.js FETCH_STUFF ./myApplication
+> node src/create-action-handlers.js FETCH_STUFF myApplication
 ```
 
 ## Next Steps
-* Make directories (e.g. /myApplicaiton, /__tests__) if they don't already exist
-  * https://stackoverflow.com/a/26815894/379512
+* Allow for deep directory paths
 * Differentiation for already existing files (e.g. already existing `actions.js`, `action-types.js`, `reducer.js`, or `sagas.js`)
   * (i.e. add to existing files if they already exist)
 * Convert to command line tool via https://www.npmjs.com/package/commander 

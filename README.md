@@ -4,11 +4,11 @@
 ```
 > git clone 
 > cd create-action-handlers
+> npm install
 > node src/create-action-handlers.js FETCH_STUFF myApplication
 ```
 
 ## Next Steps
-* Allow for deep directory paths
 * Differentiation for already existing files (e.g. already existing `actions.js`, `action-types.js`, `reducer.js`, or `sagas.js`)
   * (i.e. add to existing files if they already exist)
 * Convert to command line tool via https://www.npmjs.com/package/commander 

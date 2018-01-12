@@ -9,8 +9,6 @@
 ```
 
 ## Next Steps
-* Differentiation for already existing files (e.g. already existing `actions.js`, `action-types.js`, `reducer.js`, or `sagas.js`)
-  * (i.e. add to existing files if they already exist)
 * Convert to command line tool via https://www.npmjs.com/package/commander 
   * See example: https://scotch.io/tutorials/build-an-interactive-command-line-application-with-nodejs
 * Consider args for 
@@ -18,4 +16,5 @@
   * destination folder (e.g. ./myApplication)
   * action type (e.g. FETCH_STUFF)
   * whether or not container folders (e.g. /actions, /constants, /reducers, /sagas) are being / should be used
+  * name / locaiton of tests folder
 * Publish as node module

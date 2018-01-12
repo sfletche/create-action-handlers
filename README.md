@@ -16,5 +16,5 @@
   * destination folder (e.g. ./myApplication)
   * action type (e.g. FETCH_STUFF)
   * whether or not container folders (e.g. /actions, /constants, /reducers, /sagas) are being / should be used
-  * name / locaiton of tests folder
+  * name / location of tests folder
 * Publish as node module

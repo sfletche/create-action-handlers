@@ -1,4 +1,5 @@
 const fs = require('fs');
+const getFileAppend = require('../helpers/get-file-append');
 
 function writeHandler(err) {
   if(err) {
@@ -7,9 +8,12 @@ function writeHandler(err) {
   console.log("The action was saved!");
 }
 
-function getContent(directory, actionType, action) {
+function getFileContent(directory, content) {
+  return `// ${directory}/actions.js\n` + content;
+}
+
+function getContent(actionType, action) {
   return (
-    `// ${directory}/actions.js\n` +
     `import { ${actionType} } from './action-types';\n` +
     `\n` +
     `function ${action}() {\n` +
@@ -23,10 +27,13 @@ function getContent(directory, actionType, action) {
 }
 
 function createAction({ directory, actionType, action }) {
-  const actionContent = getContent(directory, actionType, action);
-  fs.writeFile(`${directory}/actions.js`, actionContent, writeHandler);
+  const path = `${directory}/actions.js`;
+  const content = getContent(actionType, action);
+  if (!fs.existsSync(path)) {
+    fs.writeFile(path, getFileContent(directory, content), writeHandler);
+  } else {
+    fs.appendFile(path, getFileAppend(content), writeHandler);
+  }
 }
-
-
 
 module.exports = createAction;

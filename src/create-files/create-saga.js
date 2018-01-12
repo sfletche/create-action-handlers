@@ -1,4 +1,5 @@
 const fs = require('fs');
+const getFileAppend = require('../helpers/get-file-append');
 
 function writeHandler(err) {
   if(err) {
@@ -7,8 +8,12 @@ function writeHandler(err) {
   console.log("The saga was saved!");
 }
 
-function getContent(directory, actionType, action, actionSpaced) {
-  return `// ${directory}/saga.js
+function getFileContent(directory, content) {
+  return `// ${directory}/saga.js\n` + content;
+}
+
+function getContent(actionType, action, actionSpaced) {
+  return `
 import _ from 'lodash';
 import { call, takeLatest } from 'redux-saga/effects';
 import { ${actionType} } from './action-types';
@@ -42,10 +47,13 @@ export { watch${action}, ${action} };
 }
 
 function createSaga({ directory, actionType, action, actionSpaced }) {
-  const sagaContent = getContent(directory, actionType, action, actionSpaced);
-  fs.writeFile(`${directory}/sagas.js`, sagaContent, writeHandler);
+  const path = `${directory}/saga.js`;
+  const content = getContent(actionType, action, actionSpaced);
+  if (!fs.existsSync(path)) {
+    fs.writeFile(path, getFileContent(directory, content), writeHandler);
+  } else {
+    fs.appendFile(path, getFileAppend(content), writeHandler);
+  }
 }
-
-
 
 module.exports = createSaga;

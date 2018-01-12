@@ -1,14 +1,9 @@
 const fs = require('fs');
 const _ = require('lodash');
 
-const createDirectories = require('./create-directories');
-const createActionType = require('./create-action-type');
-const createAction = require('./create-action');
-const createActionTest = require('./create-action-test');
-const createReducer = require('./create-reducer');
-const createReducerTest = require('./create-reducer-test');
-const createSaga = require('./create-saga');
-const createSagaTest = require('./create-saga-test');
+const { createDirectories } = require('./helpers');
+const { createActionType, createAction, createReducer, createSaga } = require('./create-files');
+const { createActionTest, createReducerTest, createSagaTest } = require('./create-test-files');
 
 const actionType = process.argv[2] || 'FETCH_STUFF';
 const action = _.camelCase(actionType);

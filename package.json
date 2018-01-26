@@ -2,7 +2,12 @@
   "name": "create-action-handlers",
   "version": "0.1.0",
   "description": "Automate the creation of boilerplate action handlers for React-Redux applications",
+  "preferGlobal": true,
+  "bin": {
+    "create-action-handlers": "cah-command.js"
+  },
   "dependencies": {
+    "commander": "2.13.0",
     "fs-extra": "5.0.0",
     "lodash": "4.17.4"
   },

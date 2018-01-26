@@ -1,26 +1,32 @@
-const fs = require('fs');
-const _ = require('lodash');
+const { camelCase, lowerCase } = require('lodash');
 
 const { createDirectories } = require('./helpers');
 const { createActionType, createAction, createReducer, createSaga } = require('./create-files');
 const { createActionTest, createReducerTest, createSagaTest } = require('./create-test-files');
 
-function createActionHandlers(actionType, directory) {
-  const action = _.camelCase(actionType);
-  const actionSpaced = _.lowerCase(actionType);
+function createActionHandlers(actionType, directory, options) {
+  const action = camelCase(actionType);
+  const actionSpaced = lowerCase(actionType);
+  const { actionCreator, reducer, saga, tests } = options;
 
   createDirectories(directory);
 
   createActionType({ directory, actionType });
 
-  createAction({ directory, actionType, action });
-  createActionTest({ directory, actionType, action, actionSpaced })
+  if (actionCreator) {
+    createAction({ directory, actionType, action });
+    tests && createActionTest({ directory, actionType, action, actionSpaced })
+  }
 
-  createReducer({ directory, actionType, action });
-  createReducerTest({ directory, actionType, actionSpaced });
+  if (reducer) {
+    createReducer({ directory, actionType, action });
+    tests && createReducerTest({ directory, actionType, actionSpaced });
+  }
 
-  createSaga({ directory, actionType, action, actionSpaced });
-  createSagaTest({ directory, actionType, action });
+  if (saga) {
+    createSaga({ directory, actionType, action, actionSpaced });
+    tests && createSagaTest({ directory, actionType, action });
+  }
 }
 
 module.exports = createActionHandlers;

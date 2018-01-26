@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Automate the creation of boilerplate action handlers for React-Redux applications",
   "preferGlobal": true,
-  "bin": "./cah-command.js",
+  "bin": "./create.js",
   "dependencies": {
     "commander": "2.13.0",
     "fs-extra": "5.0.0",

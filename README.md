@@ -5,12 +5,16 @@
 > git clone 
 > cd create-action-handlers
 > npm install
-> node src/create-action-handlers.js FETCH_STUFF myApplication
+> npm link
+// now from any directory you can type
+> actionHandlers create FETCH_STUFF myApplication
 ```
 
 ## Next Steps
+* Convert to installable node module
 * Convert to command line tool via https://www.npmjs.com/package/commander 
   * See example: https://scotch.io/tutorials/build-an-interactive-command-line-application-with-nodejs
+  * in process...
 * Consider args for 
   * whether or not to add to `reducer.js` (STATE) and `saga.js` (API)
   * destination folder (e.g. ./myApplication)

@@ -12,7 +12,7 @@ function getFileContent(directory, content) {
   return `// ${directory}/reducer.js\n` + content;
 }
 
-function getContent(directory, actionType, action) {
+function getContent(actionType, action) {
   return `
 import * as actionTypes from './action-types';
 

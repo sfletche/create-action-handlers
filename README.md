@@ -2,7 +2,7 @@
 
 ## To Run
 ```
-> git clone 
+> git clone https://github.com/sfletche/create-action-handlers.git
 > cd create-action-handlers
 > npm install
 > npm link

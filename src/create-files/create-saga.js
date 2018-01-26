@@ -18,15 +18,10 @@ import _ from 'lodash';
 import { call, takeLatest } from 'redux-saga/effects';
 import { ${actionType} } from './action-types';
 
-function* ${action}Api() {
-  const response = yield call(request, '/${action}', 'GET');
-  return response;
-}
-
-function* ${action}(action) {
+function* ${action}() {
   try {
     // ${actionSpaced}
-    const response = ${action}Api();
+    const response = yield call(request, '/${action}', 'GET');
     if (response.status < 400) {
       // handle success
     } else {
@@ -36,7 +31,6 @@ function* ${action}(action) {
     return error;
   }
 }
-
 
 function* watch${action}() {
   yield takeLatest(${actionType}, ${action});

@@ -40,7 +40,7 @@ describe('${directory} sagas', () => {
     beforeEach(() => {
       generator = ${action}();
       next = generator.next();
-      expect(next.value).toEqual(call(${action}Api));
+      expect(next.value).toEqual(call(request, '/${action}', 'GET'));
     });
 
     it('handles successful api call', () => {

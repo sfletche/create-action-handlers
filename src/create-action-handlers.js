@@ -5,21 +5,22 @@ const { createDirectories } = require('./helpers');
 const { createActionType, createAction, createReducer, createSaga } = require('./create-files');
 const { createActionTest, createReducerTest, createSagaTest } = require('./create-test-files');
 
-const actionType = process.argv[2] || 'FETCH_STUFF';
-const action = _.camelCase(actionType);
-const actionSpaced = _.lowerCase(actionType);
-const directory = process.argv[3] || './myApplication';
+function createActionHandlers(actionType, directory) {
+  const action = _.camelCase(actionType);
+  const actionSpaced = _.lowerCase(actionType);
 
-createDirectories(directory);
+  createDirectories(directory);
 
-createActionType({ directory, actionType });
+  createActionType({ directory, actionType });
 
-createAction({ directory, actionType, action });
-createActionTest({ directory, actionType, action, actionSpaced })
+  createAction({ directory, actionType, action });
+  createActionTest({ directory, actionType, action, actionSpaced })
 
-createReducer({ directory, actionType, action });
-createReducerTest({ directory, actionType, actionSpaced });
+  createReducer({ directory, actionType, action });
+  createReducerTest({ directory, actionType, actionSpaced });
 
-createSaga({ directory, actionType, action, actionSpaced });
-createSagaTest({ directory, actionType, action });
+  createSaga({ directory, actionType, action, actionSpaced });
+  createSagaTest({ directory, actionType, action });
+}
 
+module.exports = createActionHandlers;
